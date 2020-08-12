@@ -17,7 +17,7 @@ router.post('/users', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(201).send({ user, token })
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send()
     }
 })
 
@@ -31,7 +31,7 @@ router.post('/users/login', async (req, res) => {
         const token = await user.generateAuthToken()
         res.send({ user, token })
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send()
     }
 })
 
@@ -83,7 +83,7 @@ router.patch('/users/me', auth, async (req, res) => {
 
         res.send(req.user)
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send()
     }
 })
 
@@ -94,7 +94,7 @@ router.delete('/users/me', auth, async (req, res) => {
         sendGoodbyeEmail(req.user.email, req.user.name)
         res.send(req.user)
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send()
     }
 })
 
